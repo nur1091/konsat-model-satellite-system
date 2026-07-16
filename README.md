@@ -52,23 +52,34 @@ flowchart TD
 
 The architecture is a design baseline, not an as-flown configuration. Hardware-interface risks and unverified assumptions are listed in [System Architecture](docs/system_architecture.md).
 
-## Original engineering artifacts
+## CDR design evidence
 
-The diagrams below were extracted as standalone source images from the original CDR presentation. They are limited to my communication and ground-station responsibility; full-slide screenshots, unrelated team subsystems and unfinished placeholders are excluded.
+The diagram below was extracted as a standalone source image from the supplied CDR presentation. It is limited to my communication responsibility; full-slide screenshots, low-contrast duplicates, unrelated team subsystems and unfinished placeholders are excluded.
 
 ### Communication chain
 
-![Original payload communication chain](docs/images/original_artifacts/communication_chain.png)
+![Payload communication chain from the CDR](docs/images/original_artifacts/communication_chain.png)
 
-### Payload-to-ground-station architecture
+The telemetry-field definitions are preserved separately: [Telemetry fields - part 1](docs/images/original_artifacts/telemetry_fields_1.jpg) and [part 2](docs/images/original_artifacts/telemetry_fields_2.jpg).
 
-![Original payload and ground-station architecture](docs/images/original_artifacts/payload_ground_station_architecture.png)
+## Communication and ground-station interfaces
 
-### Ground-station RF chain
+| Source | Interface | Destination | Engineering purpose |
+|---|---|---|---|
+| Raspberry Pi Zero 2 W | UART | Payload XBee 3 | Transfer 1 Hz telemetry and receive command data |
+| Payload XBee 3 | 2.4 GHz Zigbee radio link | Ground XBee 3 | Bidirectional payload-to-ground communication |
+| Ground XBee 3 | USB serial adapter | Ground-station laptop | Deliver packets to the operator application |
+| Qt ground-station concept | Serial parser | Live plots and packet counter | Present engineering values and link status |
+| Qt ground-station concept | CSV writer | Telemetry archive | Store timestamped packets for post-mission review |
 
-![Original ground-station RF chain](docs/images/original_artifacts/ground_station_rf_chain.png)
+## Electrical interfaces
 
-The original telemetry-field definitions are preserved separately: [Telemetry fields - part 1](docs/images/original_artifacts/telemetry_fields_1.jpg) and [part 2](docs/images/original_artifacts/telemetry_fields_2.jpg).
+| Source | Interface | Destination | Status / open item |
+|---|---|---|---|
+| 3S NCR18650GA battery concept | 10.8 V nominal DC | LM2596 converter | Protection, balancing and fuse design remain open |
+| LM2596 converter | Regulated 5 V rail | Raspberry Pi Zero 2 W and communication interfaces | Efficiency, ripple, thermal performance and current margin require measurement |
+| Battery-voltage divider | Analog measurement | External ADC / processor interface | ADC hardware must be finalized because Raspberry Pi has no native analog input |
+| DS1307 RTC concept | I2C | Raspberry Pi Zero 2 W | Pull-up voltage and 3.3 V compatibility require verification |
 
 ## Selected design baseline
 
