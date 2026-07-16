@@ -29,11 +29,9 @@ The CDR file also contains unfinished template slides and does not include measu
 The repository retains only standalone source assets that could be extracted directly from the CDR presentation without using full-slide screenshots:
 
 - Payload communication chain.
-- Payload-to-ground-station architecture.
-- Ground-station RF chain.
 - Two telemetry-field definition tables.
 
-All visuals outside the author's assigned contribution are excluded. Component photographs and incomplete electrical slides are also excluded from the main README. The retained assets contain no student numbers and are not presented as implementation or qualification results.
+Low-contrast duplicate diagrams and all visuals outside the author's assigned contribution are excluded from the main README. Component photographs and incomplete electrical slides are also excluded. The retained assets contain no student numbers and are not presented as implementation or qualification results.
 
 ## Reconstructed demonstrator
 
