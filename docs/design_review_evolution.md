@@ -25,3 +25,12 @@ The CDR file also contains unfinished template slides and does not include measu
 - RF values are recalculated from the selected components rather than copied from an inconsistent draft calculation.
 - Open interfaces and missing verification evidence are stated explicitly.
 
+## Curated visual evidence
+
+Five technical visuals are retained under `docs/images/design_review/` to connect the repository's reconstructed engineering documentation to the original reviews while remaining strictly within Nisanur Kayğusuz's assigned responsibility:
+
+- PDR and CDR communication and data-handling architectures.
+- PDR and CDR payload/ground-station interfaces.
+- PDR electrical power-distribution concept. No finalized CDR electrical power-distribution visual survives in the supplied deck.
+
+Team-wide flight-software, sensor, descent-control, mechanical and structural visuals are intentionally excluded because they were outside the author's assigned contribution. The selected visuals do not contain student numbers. Their original Turkish labels and review formatting are preserved, and they are not presented as implementation or qualification results.

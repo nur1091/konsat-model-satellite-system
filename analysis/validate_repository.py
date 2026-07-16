@@ -68,6 +68,11 @@ def main() -> None:
     required_files = [
         ROOT / "README.md",
         ROOT / "docs" / "images" / "link_budget_profile.png",
+        ROOT / "docs" / "images" / "design_review" / "pdr_communication_architecture.png",
+        ROOT / "docs" / "images" / "design_review" / "cdr_communication_architecture.png",
+        ROOT / "docs" / "images" / "design_review" / "pdr_ground_station_data_flow.png",
+        ROOT / "docs" / "images" / "design_review" / "cdr_ground_station_interfaces.png",
+        ROOT / "docs" / "images" / "design_review" / "pdr_power_distribution.png",
         ROOT / "data" / "link_budget_profile.csv",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_files if not path.exists()]
@@ -82,4 +87,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

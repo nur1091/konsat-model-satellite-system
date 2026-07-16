@@ -45,6 +45,16 @@ flowchart TD
 
 The architecture is a design baseline, not an as-flown configuration. Hardware-interface risks and unverified assumptions are listed in [System Architecture](docs/system_architecture.md).
 
+## Original PDR/CDR design artifacts
+
+The following visuals are preserved from the original Preliminary and Critical Design Reviews and are limited to my assigned responsibility: communication, ground station and electrical systems. The original Turkish labels are retained for authenticity; the images are design evidence, not hardware-test or flight-test evidence.
+
+| Preliminary Design Review | Critical Design Review |
+|---|---|
+| ![PDR communication and data-handling architecture](docs/images/design_review/pdr_communication_architecture.png)<br><sub>Communication and data-handling architecture</sub> | ![CDR communication architecture](docs/images/design_review/cdr_communication_architecture.png)<br><sub>Communication and data-handling architecture</sub> |
+| ![PDR payload and ground-station data flow](docs/images/design_review/pdr_ground_station_data_flow.png)<br><sub>Payload and ground-station data flow</sub> | ![CDR ground-station interfaces](docs/images/design_review/cdr_ground_station_interfaces.png)<br><sub>Ground-station interfaces</sub> |
+| ![PDR electrical power distribution](docs/images/design_review/pdr_power_distribution.png)<br><sub>Electrical power-distribution concept</sub> | *No finalized CDR electrical power-distribution visual survives in the supplied deck.* |
+
 ## Selected design baseline
 
 | Function | Selected element | Primary interface |
@@ -100,6 +110,7 @@ Review the [Requirements Traceability Matrix](data/requirements_traceability.csv
 analysis/            RF calculation and repository checks
 data/                Inputs, component selections and traceability
 docs/                Architecture, methodology and design-review notes
+  images/design_review/  Curated original PDR/CDR artifacts
 results/             Generated RF summary
 ```
 
@@ -149,4 +160,3 @@ Aerospace Engineer
 Necmettin Erbakan University  
 
 [LinkedIn](https://www.linkedin.com/in/nisanur-kay%C4%9Fusuz-62569b1ba/) · [Email](mailto:nisanurkaygusuz0625@gmail.com)
-
