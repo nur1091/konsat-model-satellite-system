@@ -14,7 +14,7 @@ This repository converts the surviving design-review material into a concise and
 |---|---|
 | Lifecycle | Preliminary and Critical Design Reviews |
 | Individual responsibility | Communication, ground station and electrical-system interfaces |
-| Core evidence | Original architecture diagrams, requirements traceability and RF analysis |
+| Core evidence | CDR communication diagram, requirements traceability and RF analysis |
 | Demonstrator | Reconstructed 1 Hz telemetry generation, CSV logging and visualization |
 | Validation status | Design and analysis evidence; no flight-test claim |
 
