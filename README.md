@@ -6,9 +6,17 @@ Systems-engineering portfolio for a 2.4 GHz XBee-based CanSat concept covering t
 
 ## Overview
 
-KONSAT was developed as a 2024-2025 academic spacecraft-system-design project. The team advanced the concept through Preliminary Design Review (PDR) and Critical Design Review (CDR), addressing the payload, descent-control mechanism, sensors, communication and data handling, ground control, electrical power and flight-software concepts.
+KONSAT was developed as a 2024-2025 academic model-satellite project and advanced through Preliminary Design Review (PDR) and Critical Design Review (CDR). This portfolio is deliberately limited to my assigned communication, ground-station and electrical-interface work.
 
 This repository converts the surviving design-review material into a concise and reviewable engineering portfolio. It intentionally separates documented design evidence from planned verification work.
+
+| Project snapshot | Scope |
+|---|---|
+| Lifecycle | Preliminary and Critical Design Reviews |
+| Individual responsibility | Communication, ground station and electrical-system interfaces |
+| Core evidence | Original architecture diagrams, requirements traceability and RF analysis |
+| Demonstrator | Reconstructed 1 Hz telemetry generation, CSV logging and visualization |
+| Validation status | Design and analysis evidence; no flight-test claim |
 
 ## My contribution
 
@@ -26,7 +34,7 @@ As the team member responsible for the **communication system, ground station an
 - Define a model-satellite architecture traceable to competition requirements.
 - Transmit sensor and mission data to a portable ground station at 1 Hz.
 - Support command exchange, real-time visualization and CSV recording.
-- Select compatible communication, processing, sensing and power components.
+- Select compatible communication, processing and power-interface components.
 - Evaluate the line-of-sight RF link with a transparent, reproducible model.
 - Establish verification methods before implementation and flight testing.
 
@@ -34,9 +42,8 @@ As the team member responsible for the **communication system, ground station an
 
 ```mermaid
 flowchart TD
-    SENS["Sensors and cameras"] --> PI["Raspberry Pi Zero 2 W"]
-    RTC["RTC and mission time"] --> PI
-    PI --> SD["Onboard storage"]
+    SRC["Payload telemetry source"] --> PI["Raspberry Pi Zero 2 W"]
+    RTC["Mission time"] --> PI
     PI -->|UART| XB1["Payload XBee 3"]
     XB1 -->|2.4 GHz link| XB2["Ground XBee 3"]
     XB2 -->|USB serial| GCS["Qt ground station"]
@@ -45,15 +52,23 @@ flowchart TD
 
 The architecture is a design baseline, not an as-flown configuration. Hardware-interface risks and unverified assumptions are listed in [System Architecture](docs/system_architecture.md).
 
-## Original PDR/CDR design artifacts
+## Original engineering artifacts
 
-The following visuals are preserved from the original Preliminary and Critical Design Reviews and are limited to my assigned responsibility: communication, ground station and electrical systems. The original Turkish labels are retained for authenticity; the images are design evidence, not hardware-test or flight-test evidence.
+The diagrams below were extracted as standalone source images from the original CDR presentation. They are limited to my communication and ground-station responsibility; full-slide screenshots, unrelated team subsystems and unfinished placeholders are excluded.
 
-| Preliminary Design Review | Critical Design Review |
-|---|---|
-| ![PDR communication and data-handling architecture](docs/images/design_review/pdr_communication_architecture.png)<br><sub>Communication and data-handling architecture</sub> | ![CDR communication architecture](docs/images/design_review/cdr_communication_architecture.png)<br><sub>Communication and data-handling architecture</sub> |
-| ![PDR payload and ground-station data flow](docs/images/design_review/pdr_ground_station_data_flow.png)<br><sub>Payload and ground-station data flow</sub> | ![CDR ground-station interfaces](docs/images/design_review/cdr_ground_station_interfaces.png)<br><sub>Ground-station interfaces</sub> |
-| ![PDR electrical power distribution](docs/images/design_review/pdr_power_distribution.png)<br><sub>Electrical power-distribution concept</sub> | *No finalized CDR electrical power-distribution visual survives in the supplied deck.* |
+### Communication chain
+
+![Original payload communication chain](docs/images/original_artifacts/communication_chain.png)
+
+### Payload-to-ground-station architecture
+
+![Original payload and ground-station architecture](docs/images/original_artifacts/payload_ground_station_architecture.png)
+
+### Ground-station RF chain
+
+![Original ground-station RF chain](docs/images/original_artifacts/ground_station_rf_chain.png)
+
+The original telemetry-field definitions are preserved separately: [Telemetry fields - part 1](docs/images/original_artifacts/telemetry_fields_1.jpg) and [part 2](docs/images/original_artifacts/telemetry_fields_2.jpg).
 
 ## Selected design baseline
 
@@ -63,9 +78,6 @@ The following visuals are preserved from the original Preliminary and Critical D
 | Telemetry radio | Digi XBee 3 XB3-24Z8ST-J | UART / 2.4 GHz Zigbee 3.0 |
 | Payload antenna concept | Abracon APARN1204-S2450 | 2.4 GHz RF interface |
 | Mission time | DS1307 RTC concept | I2C |
-| Pressure and temperature | BMP280 | I2C |
-| Motion sensing | MPU6050 + HMC5883L | I2C |
-| Position | GY-NEO6MV2 GPS | UART |
 | Power conversion | LM2596 buck converter concept | 10.8 V nominal to 5 V |
 | Energy storage | Three NCR18650GA cells in series | 3S battery concept |
 | Ground software | Qt / C++ concept | USB serial, live plots, CSV |
@@ -92,6 +104,14 @@ The PDR/CDR material contained a valid 1 km free-space path-loss result but comb
 
 The result is an **ideal line-of-sight analytical value**. It excludes cable, connector, polarization, pointing, enclosure, multipath and implementation losses because these were not measured. It is not a range-test or flight-test result. See [Methodology and Assumptions](docs/methodology.md).
 
+## Telemetry-processing demonstrator
+
+To make the documented 1 Hz telemetry and CSV-logging concept executable, the repository includes a deterministic portfolio demonstrator. It generates a simulated 120-second mission profile, writes 121 telemetry packets to CSV and produces an operator-style engineering plot.
+
+![Simulated telemetry demonstration](docs/images/telemetry_demo.png)
+
+Review the [telemetry schema](data/telemetry_schema.csv), [sample CSV](data/sample_telemetry.csv) and [demonstrator source](demo/generate_telemetry_demo.py). This is a reconstruction based on my documented interface work; it is not presented as original flight software or measured mission data.
+
 ## Requirements and verification
 
 The traceability dataset distinguishes four states:
@@ -108,10 +128,11 @@ Review the [Requirements Traceability Matrix](data/requirements_traceability.csv
 ```text
 .github/workflows/   Automated design validation
 analysis/            RF calculation and repository checks
-data/                Inputs, component selections and traceability
+demo/                Reconstructed 1 Hz telemetry demonstrator
+data/                Inputs, telemetry, component selections and traceability
 docs/                Architecture, methodology and design-review notes
-  images/design_review/  Curated original PDR/CDR artifacts
-results/             Generated RF summary
+  images/original_artifacts/  Standalone source diagrams extracted from the CDR
+results/             Generated RF and telemetry summaries
 ```
 
 The original PDR and CDR files are not redistributed because they contain student identifiers, team information and draft material. Their relevant engineering content is summarized here without presenting the full files as implementation evidence.
@@ -121,14 +142,16 @@ The original PDR and CDR files are not redistributed because they contain studen
 ```bash
 python -m pip install -r requirements.txt
 python analysis/generate_link_budget.py
+python demo/generate_telemetry_demo.py
 python analysis/validate_repository.py
 ```
 
-The GitHub Actions workflow regenerates the link-budget dataset and checks the committed requirements, component and result files on every push.
+The GitHub Actions workflow regenerates the RF and simulated telemetry datasets, then checks the committed requirements, component and result files on every push.
 
 ## Key engineering findings
 
 - The corrected ideal 1 km link closes analytically with approximately 29.95 dB margin before implementation losses.
+- The reconstructed 1 Hz demonstrator produces a traceable telemetry schema, sample CSV and engineering visualization without misrepresenting simulated data as flight evidence.
 - The selected XBee variant uses an RPSMA RF port, while the APARN1204-S2450 is a surface-mount patch antenna; the final RF feed and carrier-board implementation therefore remain open.
 - The two-hour operating-duration requirement is not verified because a measured load profile and complete power budget are absent.
 - The DS1307/Raspberry Pi I2C voltage interface requires hardware-level verification before integration.
@@ -147,7 +170,7 @@ The GitHub Actions workflow regenerates the link-budget dataset and checks the c
 - Implement the Qt ground station with serial parsing, live plots, commands and CSV logging.
 - Complete a measured power budget and a two-hour endurance test.
 - Verify I2C voltage compatibility and power-rail current limits.
-- Run functional, vibration, shock, deployment and recovery tests against the traceability matrix.
+- Run end-to-end communication and electrical-interface tests against the traceability matrix.
 
 ## Tools and technologies
 

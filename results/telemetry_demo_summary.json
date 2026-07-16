@@ -1,0 +1,9 @@
+{
+  "evidence_type": "Simulated portfolio demonstration",
+  "sample_rate_hz": 1,
+  "duration_s": 120,
+  "packet_count": 121,
+  "maximum_altitude_m": 500.0,
+  "minimum_battery_v": 10.8,
+  "note": "Generated data; not measured flight telemetry."
+}

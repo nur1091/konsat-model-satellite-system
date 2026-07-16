@@ -65,23 +65,40 @@ def main() -> None:
         if abs(actual - expected_value) > 1e-5:
             raise ValueError(f"Unexpected {field}: {actual} != {expected_value}")
 
+    telemetry_rows = read_csv(ROOT / "data" / "sample_telemetry.csv")
+    if len(telemetry_rows) != 121:
+        raise ValueError(f"Unexpected telemetry row count: {len(telemetry_rows)}")
+    times = [int(row["mission_time_s"]) for row in telemetry_rows]
+    packets = [int(row["packet_count"]) for row in telemetry_rows]
+    if times != list(range(121)) or packets != list(range(1, 122)):
+        raise ValueError("Telemetry time or packet sequence is not continuous at 1 Hz.")
+
+    telemetry_summary = json.loads(
+        (ROOT / "results" / "telemetry_demo_summary.json").read_text(encoding="utf-8")
+    )
+    if telemetry_summary["evidence_type"] != "Simulated portfolio demonstration":
+        raise ValueError("Telemetry evidence boundary is missing or incorrect.")
+
     required_files = [
         ROOT / "README.md",
         ROOT / "docs" / "images" / "link_budget_profile.png",
-        ROOT / "docs" / "images" / "design_review" / "pdr_communication_architecture.png",
-        ROOT / "docs" / "images" / "design_review" / "cdr_communication_architecture.png",
-        ROOT / "docs" / "images" / "design_review" / "pdr_ground_station_data_flow.png",
-        ROOT / "docs" / "images" / "design_review" / "cdr_ground_station_interfaces.png",
-        ROOT / "docs" / "images" / "design_review" / "pdr_power_distribution.png",
+        ROOT / "docs" / "images" / "telemetry_demo.png",
+        ROOT / "docs" / "images" / "original_artifacts" / "communication_chain.png",
+        ROOT / "docs" / "images" / "original_artifacts" / "payload_ground_station_architecture.png",
+        ROOT / "docs" / "images" / "original_artifacts" / "ground_station_rf_chain.png",
+        ROOT / "docs" / "images" / "original_artifacts" / "telemetry_fields_1.jpg",
+        ROOT / "docs" / "images" / "original_artifacts" / "telemetry_fields_2.jpg",
         ROOT / "data" / "link_budget_profile.csv",
+        ROOT / "data" / "telemetry_schema.csv",
+        ROOT / "data" / "sample_telemetry.csv",
     ]
     missing = [str(path.relative_to(ROOT)) for path in required_files if not path.exists()]
     if missing:
         raise FileNotFoundError(f"Missing required repository files: {missing}")
 
     print(
-        f"Validated {len(requirements)} requirements, {len(components)} components "
-        "and the reference RF analysis."
+        f"Validated {len(requirements)} requirements, {len(components)} components, "
+        f"{len(telemetry_rows)} telemetry packets and the reference RF analysis."
     )
 
 

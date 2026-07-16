@@ -7,6 +7,8 @@
 
 The original files are not committed because they contain student identifiers, team information and unfinished draft slides.
 
+Standalone communication, ground-station and telemetry-definition assets under `docs/images/original_artifacts/` were extracted directly from the supplied CDR PowerPoint media package. Full-slide screenshots and unrelated team subsystems are excluded.
+
 ## Manufacturer references
 
 - [Digi XBee 3 Zigbee product page](https://www.digi.com/products/models/xb3-24z8st-j)
@@ -16,4 +18,3 @@ The original files are not committed because they contain student identifiers, t
 - [Raspberry Pi Zero 2 W product specification](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/)
 
 Manufacturer references confirm device-level values only. They do not verify the assembled KONSAT implementation.
-

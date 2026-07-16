@@ -59,3 +59,8 @@ These terms require a finalized RF implementation, deployment geometry and measu
 
 `analysis/validate_repository.py` verifies traceability states, unique identifiers, component evidence classes and the reference RF metrics.
 
+## Telemetry demonstrator
+
+`demo/generate_telemetry_demo.py` reconstructs the documented 1 Hz telemetry and CSV-logging concept as an executable portfolio demonstration. It creates a deterministic 120-second ascent/descent profile with altitude, pressure, temperature, battery, GPS, packet-counter and command-echo fields.
+
+The resulting CSV and plot are synthetic. They demonstrate data handling and traceability only; they are not original flight software, radio-test data or measured mission telemetry.

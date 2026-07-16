@@ -1,15 +1,10 @@
 function,selected_element,key_design_value,interface,evidence_level,open_item
-Main processing,Raspberry Pi Zero 2 W,"1 GHz quad-core Cortex-A53; 512 MB SDRAM",I2C/UART/SPI/USB/CSI,Design evidence,Confirm boot time and flight-software resource use on hardware
+Main processing,Raspberry Pi Zero 2 W,"1 GHz quad-core Cortex-A53; 512 MB SDRAM",UART/I2C/USB,Design evidence,Confirm boot time and telemetry-processing resource use on hardware
 Telemetry radio,Digi XBee 3 XB3-24Z8ST-J,"2.4 GHz Zigbee 3.0; +8 dBm; -103 dBm sensitivity",UART and RPSMA,Design evidence,Perform configured point-to-point range and packet-delivery tests
 Payload antenna,Abracon APARN1204-S2450,"2400-2500 MHz; +2 dBi typical peak gain",Surface-mount 50-ohm RF structure,Design evidence,Resolve mismatch between SMD antenna implementation and selected RPSMA radio port
 Ground antenna,AS-2-17 concept,"2400-2500 MHz; 17 dBi directional gain used in design",RPSMA/coax to ground radio,Design evidence,Confirm exact manufacturer part number polarization connector and measured pattern
 Mission time,DS1307 RTC concept,External real-time clock,I2C,Design evidence,Verify 3.3 V Raspberry Pi I2C compatibility and backup behavior
-Pressure and temperature,BMP280,Pressure and temperature sensing,I2C,Design evidence,Calibrate altitude conversion and temperature bias
-Motion sensing,MPU6050 + HMC5883L,Acceleration rotation and magnetic heading,I2C,Design evidence,Calibrate sensors and address magnetic interference
-Position,GY-NEO6MV2 GPS,GNSS position and satellite count,UART,Design evidence,Verify update rate lock time antenna placement and field performance
-Imaging,Raspberry Pi Camera Module V1.3 + OV3660 USB camera,Deployment and nadir video,CSI and USB,Design evidence,Verify simultaneous recording storage and power demand
 Voltage monitoring,ADC input + resistor divider,Battery-voltage telemetry,ADC,Design evidence,Define ADC hardware because Raspberry Pi Zero 2 W has no native analog input
 Power conversion,LM2596 buck converter,10.8 V nominal to 5 V concept,DC power,Design evidence,Verify efficiency ripple thermal behavior and current margin
 Energy storage,Three NCR18650GA cells in series,3S 10.8 V nominal 3500 mAh pack,DC power,Design evidence,Add protection balancing fuse and measured two-hour endurance evidence
 Ground software,Qt / C++ concept,Live telemetry plots commands simulation and CSV,USB serial,Planned verification,No executable source or test record survives in supplied files
-

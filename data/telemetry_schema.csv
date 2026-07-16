@@ -1,0 +1,15 @@
+field,unit,purpose,source_status
+mission_time_s,s,Mission elapsed time at 1 Hz,PDR/CDR requirement
+packet_count,count,Sequential transmitted-packet counter,PDR/CDR requirement
+mode,-,Flight or simulation operating mode,PDR/CDR interface
+state,-,Mission phase for operator display,Portfolio reconstruction
+altitude_m,m,Barometric altitude,PDR/CDR requirement
+pressure_pa,Pa,Measured or simulated atmospheric pressure,PDR/CDR requirement
+temperature_c,degC,Payload internal temperature,PDR/CDR requirement
+battery_v,V,Payload battery voltage,PDR/CDR requirement
+latitude_deg,deg,GPS latitude,PDR/CDR requirement
+longitude_deg,deg,GPS longitude,PDR/CDR requirement
+gps_altitude_m,m,GPS altitude,PDR/CDR requirement
+satellites,count,Tracked GPS satellite count,PDR/CDR requirement
+command_echo,-,Echo of the most recent ground command,PDR/CDR requirement
+
