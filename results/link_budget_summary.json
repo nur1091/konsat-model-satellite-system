@@ -1,0 +1,14 @@
+{
+  "model": "Ideal free-space analytical baseline",
+  "reference_distance_m": 1000.0,
+  "frequency_hz": 2400000000.0,
+  "tx_power_dbm": 8.0,
+  "tx_antenna_gain_dbi": 2.0,
+  "rx_antenna_gain_dbi": 17.0,
+  "implementation_loss_db": 0.0,
+  "receiver_sensitivity_dbm": -103.0,
+  "fspl_db": 100.052008,
+  "received_power_dbm": -73.052008,
+  "link_margin_db": 29.947992,
+  "assumption_note": "Ideal free-space baseline. Cable, connector, polarization, pointing, enclosure, multipath and implementation losses are not measured and are set to zero."
+}

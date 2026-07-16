@@ -1,0 +1,14 @@
+{
+  "frequency_hz": 2400000000.0,
+  "reference_distance_m": 1000.0,
+  "profile_start_m": 100.0,
+  "profile_stop_m": 2000.0,
+  "profile_step_m": 100.0,
+  "tx_power_dbm": 8.0,
+  "tx_antenna_gain_dbi": 2.0,
+  "rx_antenna_gain_dbi": 17.0,
+  "receiver_sensitivity_dbm": -103.0,
+  "implementation_loss_db": 0.0,
+  "assumption_note": "Ideal free-space baseline. Cable, connector, polarization, pointing, enclosure, multipath and implementation losses are not measured and are set to zero."
+}
+

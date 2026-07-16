@@ -1,0 +1,26 @@
+id,requirement,design_response,verification_method,evidence_status
+X1,Use an approved 2.4 GHz or 900 MHz XBee telemetry radio,XB3-24Z8ST-J 2.4 GHz radio selected,Inspection of part number and configured hardware,Design evidence
+X2,Configure the XBee network identifier for the team network,Point-to-point network configuration planned,XCTU configuration inspection and communication test,Planned verification
+X3,Do not use broadcast mode,Point-to-point addressing planned,XCTU configuration inspection and packet-address test,Planned verification
+X4,Transmit telemetry once per second,Telemetry format and 1 Hz update concept defined,Timestamped end-to-end packet test,Planned verification
+X5,Include altitude pressure temperature battery command echo and GPS fields,Telemetry-field concept defined,Schema inspection and field-by-field injection test,Design evidence
+G1,Command zero-altitude calibration before launch,Ground command concept includes calibration,Command-response functional test,Planned verification
+G2,Create CSV files for sensor telemetry,Qt ground-station CSV logging concept defined,File-generation and schema test,Planned verification
+G3,Include mission time at one-second resolution,RTC and telemetry-time fields included,Reset-retention and timestamp test,Design evidence
+G6,Display telemetry in real time during ascent and descent,Live Qt plotting concept defined,End-to-end display latency test,Planned verification
+G7,Display telemetry in SI units with units visible,Ground-display requirement recorded,GUI inspection and unit-conversion test,Planned verification
+G8,Plot every telemetry field in real time,Separate live-plot concept defined,Simulated telemetry playback test,Planned verification
+G9,Provide a portable laptop radio and antenna with at least two hours of operation,Portable GCS hardware concept defined,Two-hour endurance test,Open
+G11,Send SIMULATION ENABLE and SIMULATION ACTIVATE commands,Simulation command sequence defined,State-transition and command-echo test,Design evidence
+G12,Transmit simulation pressure data from CSV at 1 Hz,CSV playback behavior defined,Timed simulation-profile test,Planned verification
+G15,Count packets successfully received by the ground system,Packet-count requirement recorded,Known packet-sequence injection test,Planned verification
+G16,Command all deployment mechanisms from the ground station,Command interface concept defined,Safe bench activation test,Planned verification
+E3,Provide an easily accessible payload power switch,Power-switch requirement allocated,Physical inspection and access demonstration,Planned verification
+E4,Provide a payload power indicator,Power-indicator requirement allocated,Physical inspection,Planned verification
+E5,Operate for at least two hours after integration,Three-cell battery concept selected,Measured full-load endurance test,Open
+E6,Power the audible beacon from an independent battery,Independent beacon supply required,Power-isolation inspection and functional test,Planned verification
+F1,Retain the transmitted-packet count through processor resets,Persistent counter behavior required,Reset and persistence test,Planned verification
+F2,Retain mission time through power interruptions or processor resets,External RTC concept selected,Power-interruption and recovery test,Planned verification
+F4,Support a simulated flight profile with one-second pressure updates,Simulation mode architecture defined,CSV profile playback test,Design evidence
+RF1,Close the 2.4 GHz line-of-sight link at 1 km using selected RF parameters,Corrected reproducible free-space analysis included,Automated link-budget calculation,Analysis evidence
+
