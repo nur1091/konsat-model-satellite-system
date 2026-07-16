@@ -84,8 +84,6 @@ def main() -> None:
         ROOT / "docs" / "images" / "link_budget_profile.png",
         ROOT / "docs" / "images" / "telemetry_demo.png",
         ROOT / "docs" / "images" / "original_artifacts" / "communication_chain.png",
-        ROOT / "docs" / "images" / "original_artifacts" / "payload_ground_station_architecture.png",
-        ROOT / "docs" / "images" / "original_artifacts" / "ground_station_rf_chain.png",
         ROOT / "docs" / "images" / "original_artifacts" / "telemetry_fields_1.jpg",
         ROOT / "docs" / "images" / "original_artifacts" / "telemetry_fields_2.jpg",
         ROOT / "data" / "link_budget_profile.csv",
